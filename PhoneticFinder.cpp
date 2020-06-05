@@ -7,9 +7,9 @@ using namespace std;
 
 namespace phonetic {
 
-	bool help(char a , cahr b){
+	bool help(char a , char b){
 		//if they similar
-		if(a == y)
+		if(a == b)
 			return true;
 
 		//upper case
