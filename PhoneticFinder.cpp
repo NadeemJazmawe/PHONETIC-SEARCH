@@ -111,7 +111,11 @@ namespace phonetic {
               s.clear();
               j = 0;
             }
- 		}
-		throw invalid_argument("there is no world similar to the word in the text !");
+		if ((a.length() == i) && (b.length() != s.length()))
+        {
+            throw runtime_error("The word " + b + " is not in the text.");
+        }
+ 	}
+	throw invalid_argument("there is no world similar to the word in the text !");
 	}
 };
