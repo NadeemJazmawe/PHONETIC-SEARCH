@@ -10,13 +10,7 @@ namespace phonetic {
 
 
 	bool help( char a , char b){
-		if(a == b ) 
-			return true;
-
-		if(a == b+32)
-			return true;
-		if(a == b-32)
-			return false;
+	
 
 		if(((a == 'v') || (a == 'V') || (a == 'w') || (a == 'W'))
 			&&((b == 'v') || (b == 'V') || (b == 'w') || (b == 'W')))
