@@ -56,7 +56,8 @@ bool similar(char x,char y)
 	string find (string x , string y){
 		string save = "";
 		int j = 0;
-		for(int i = 0 ; i < x.length() ; i++){
+		size_t i = 0;
+		for(i = 0 ; i < x.length() ; i++){
 			if (y == "")
            		throw std::invalid_argument("Can't find the word in the text !");
 		
