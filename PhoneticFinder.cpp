@@ -53,37 +53,47 @@ namespace phonetic {
 
 }
 
-	string find (string x , string y){
-		string save = "";
-		int j = 0;
-		for(int i = 0 ; i < x.length() ; i++){
-			if (y == "")
-           		throw std::invalid_argument("Can't find the word in the text !");
-		
-           	while(x[i] == ' ')
-           		i++;
+	tring find(string text,string word)
+{
+   string str = "";
+    int j = 0;
+    size_t i = 0;
+    for (i = 0; i < text.length(); i++)
+    {
 
-           	while(y[j] == ' ')
-           		j++;
+        if (word == "")
+            throw std::invalid_argument("Can't find the word in the text !");
 
-           	while((x.length() > i) && (y.length() > j) && (help(y[i] , y[j])) && (x[i] != ' ')){
-           		save += x[i];
-           		j++;
-           		i++;
-           	}
+        while (text[i] == ' ')
+        {
+            i++;
+        }
+        while (word[j]==' ')
+        {
+            j++;
+        }
 
-           	if(y.length() == save.length())
-           		return save;
+        while ((text.length() > i) && (word.length() > j) && (help(text[i], word[j]))&&(text[i]!=' '))
+        {
+            str += text[i];
+            j++;
+            i++;
+        }
+        if (str.length() == word.length())
+            return str;
 
-           	else{
-           		j = 0;
-           		save.clear();
-           	}
+        else
+        {
+            str.clear();
+            j = 0;
+        }
 
-           	if((x.length() == i) && (y.length() != save.length()))
-           		throw runtime_error("The word " + y + " is not in the text.");
-		}
-		throw runtime_error("The word " + y + " is not in the text.");
-	}
+        if ((text.length() == i) && (word.length() != str.length()))
+        {
+            throw runtime_error("The word " + word + " is not in the text.");
+        }
+    }
+    throw runtime_error("The word " + word + " is not in the text.");    
+    }
 
 }
