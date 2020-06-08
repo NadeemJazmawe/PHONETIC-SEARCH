@@ -1,18 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@nadeemjazmawe 
-Code Issues 0 Pull requests 0 Projects 0 Actions Wiki Security 0 Pulse Community
-Phonetic-search-B/PhoneticFinder.cpp
-@zhra2zaid zhra2zaid Initial commit
-2570cca on Mar 30
-98 lines (68 sloc)  2.6 KB
-  
 #include <iostream>
 #include <stdexcept>
 #include <string.h> 
@@ -111,15 +96,3 @@ string find(string text,string word)
     throw runtime_error("The word " + word + " is not in the text.");    
     }
 }
-© 2020 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
