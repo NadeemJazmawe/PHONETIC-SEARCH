@@ -1,89 +1,98 @@
-
 #include <iostream>
-#include <string.h>
-#include "PhoneticFinder.hpp"
 #include <stdexcept>
+#include <string.h> 
+#include "PhoneticFinder.hpp"
 
 using namespace std;
 
-namespace phonetic {
+
+namespace phonetic{
 
 
-	bool help( char a , char b){
-		if(a == b ) 
-			return true;
+bool similar(char x,char y)
+{
+    if (x==y) return true;
+    if((x==y)||(x==y+32)||(x==y-32))    return true;
+       
+    if(((x=='v')||(x=='V'))&&((y=='w')||(y=='W')))   return true;     
+    if(((x=='w')||(x=='W'))&&((y=='v')||(y=='V')))   return true;
 
-		if(a == b+32)
-			return true;
-		if(a == b-32)
-			return false;
+    if((((x=='b')||(x=='B'))&&(((y=='f')||(y=='F'))||((y=='p')||(y=='P')))))   return true;
+    if((((x=='f')||(x=='F'))&&(((y=='b')||(y=='B'))||((y=='p')||(y=='P')))))   return true;
+    if((((x=='p')||(x=='P'))&&(((y=='f')||(y=='F'))||((y=='b')||(y=='B')))))   return true;
 
-		if((a == 'v') || (a == 'V') || (a == 'w') || (a == 'W'))
-			if((b == 'v') || (b == 'V') || (b == 'w') || (b == 'W'))
-				return true;
 
-		if((a == 'g') || (a == 'G') || (a == 'j') || (a == 'J'))
-			if((b == 'g') || (b == 'G') || (b == 'j') || (b == 'J'))
-				return true;
+    if(((x=='g')||(x=='G'))&&((y=='j')||(y=='J')))   return true;     
+    if(((x=='j')||(x=='J'))&&((y=='g')||(y=='G')))   return true;
 
-		if((a == 's') || (a == 'S') || (a == 'z') || (a == 'Z'))
-			if((b == 's') || (b == 'S') || (b == 'z') || (b == 'Z'))
-				return true;
+    if((((x=='c')||(x=='C'))&&(((y=='k')||(y=='K'))||((y=='q')||(y=='Q')))))   return true;
+    if((((x=='k')||(x=='K'))&&(((y=='c')||(y=='C'))||((y=='q')||(y=='Q')))))   return true;
+    if((((x=='q')||(x=='Q'))&&(((y=='c')||(y=='C'))||((y=='k')||(y=='K')))))   return true;
 
-		if((a == 'd') || (a == 'D') || (a == 't') || (a == 'T'))
-			if((b == 'd') || (b == 'D') || (b == 't') || (b == 'T'))
-				return true;
+    
+    if(((x=='s')||(x=='S'))&&((y=='z')||(y=='Z')))   return true;     
+    if(((x=='Z')||(x=='z'))&&((y=='s')||(y=='S')))   return true;
 
-		if((a == 'o') || (a == 'O') || (a == 'u') || (a == 'U'))
-			if((b == 'o') || (b == 'O') || (b == 'u') || (b == 'U'))
-				return true;
 
-		if((a == 'i') || (a == 'I') || (a == 'y') || (a == 'Y'))
-			if((b == 'i') || (b == 'I') || (b == 'y') || (b == 'Y'))
-				return true;
+    if(((x=='d')||(x=='D'))&&((y=='t')||(y=='T')))   return true;     
+    if(((x=='t')||(x=='T'))&&((y=='d')||(y=='D')))   return true;
 
-		if((a == 'c') || (a == 'C') || (a == 'k') || (a == 'K') || (a == 'q') || (a == 'Q'))
-			if((b == 'c') || (b == 'C') || (b == 'k') || (b == 'K') || (b == 'q') || (b == 'Q'))
-				return true;
 
-		if((a == 'b') || (a == 'B') || (a == 'f') || (a == 'F') || (a == 'p') || (a == 'P'))
-			if((b == 'b') || (b == 'B') || (b == 'f') || (b == 'F') || (b == 'p') || (b == 'P'))
-				return true;
+    if(((x=='o')||(x=='O'))&&((y=='u')||(y=='U')))   return true;     
+    if(((x=='u')||(x=='U'))&&((y=='o')||(y=='O')))   return true;
 
-		return false;
-	}
 
-	string find (string x , string y){
-		string save = "";
-		int j = 0;
-		for(int i = 0 ; i < x.length() ; i++){
-			if (y == "")
-           		throw std::invalid_argument("Can't find the word in the text !");
-		
-           	while(x[i] == ' ')
-           		i++;
+    if(((x=='i')||(x=='I'))&&((y=='y')||(y=='Y')))   return true;     
+    if(((x=='y')||(x=='Y'))&&((y=='i')||(y=='I')))   return true;  
 
-           	while(y[j] == ' ')
-           		j++;
 
-           	while((x.length() > i) && (y.length() > j) && (help(y[i] , y[j])) && (x[i] != ' ')){
-           		save += x[i];
-           		j++;
-           		i++;
-           	}
+   
+            
+            return false;
 
-           	if(y.length() == save.length())
-           		return save;
 
-           	else{
-           		j = 0;
-           		save.clear();
-           	}
+}
 
-           	if((x.length() == i) && (y.length() != save.length()))
-           		throw runtime_error("The word " + y + " is not in the text.");
-		}
-		throw runtime_error("The word " + y + " is not in the text.");
-	}
+string find(string text,string word)
+{
+   string str = "";
+    int j = 0;
+    size_t i = 0;
+    for (i = 0; i < text.length(); i++)
+    {
 
+        if (word == "")
+            throw std::invalid_argument("Can't find the word in the text !");
+
+        while (text[i] == ' ')
+        {
+            i++;
+        }
+        while (word[j]==' ')
+        {
+            j++;
+        }
+
+        while ((text.length() > i) && (word.length() > j) && (similar(text[i], word[j]))&&(text[i]!=' '))
+        {
+            str += text[i];
+            j++;
+            i++;
+        }
+        if (str.length() == word.length())
+            return str;
+
+        else
+        {
+            str.clear();
+            j = 0;
+        }
+
+        if ((text.length() == i) && (word.length() != str.length()))
+        {
+            throw runtime_error("The word " + word + " is not in the text.");
+        }
+    }
+    throw runtime_error("The word " + word + " is not in the text.");    
+    }
 }
