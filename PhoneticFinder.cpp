@@ -1,7 +1,7 @@
 
 #include <iostream>
 #include <string>
-#include "Phoneticfinder.hpp"
+#include "PhoneticFinder.hpp"
 #include <stdexcept>
 
 using namespace std;
