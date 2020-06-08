@@ -8,8 +8,7 @@ using namespace std;
 
 namespace phonetic {
 
-	bool help(char x , char y){
-		bool help(char a , char b){
+	bool help(char a , char b){
 		//if they similar
 		if(a == b)
 			return true;
@@ -71,7 +70,6 @@ namespace phonetic {
 
     	
     	return false;
-
 	}
 
 
