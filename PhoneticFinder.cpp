@@ -1,84 +1,59 @@
-
 #include <iostream>
-#include <string>
-#include "PhoneticFinder.hpp"
 #include <stdexcept>
+#include <string.h> 
+#include "PhoneticFinder.hpp"
 
 using namespace std;
 
-namespace phonetic {
 
-	bool help(char a , char b){
-		//if they similar
-		if(a == b)
-			return true;
-
-		//upper case
-		if( (a==b+32) || (a=b-32))
-			return true;
-
-		//else all the other cases:-
-		if(((a=='v')||(a=='V'))&&((b=='w')||(b=='W')))   
-			return true;     
-    	if(((a=='w')||(a=='W'))&&((b=='v')||(b=='V')))   
-    		return true;
-
-    	if((((a=='b')||(a=='B'))&&(((b=='f')||(b=='F'))||((b=='p')||(b=='P')))))  
-            return true;
-    	if((((a=='f')||(a=='F'))&&(((b=='b')||(b=='B'))||((b=='p')||(b=='P')))))   
-    		return true;
-   		if((((a=='p')||(a=='P'))&&(((b=='f')||(b=='F'))||((b=='b')||(b=='B')))))  
-   		    return true;
+namespace phonetic{
 
 
-   		if(((a=='g')||(a=='G'))&&((b=='j')||(b=='J')))   
-   			return true;     
-    	if(((a=='j')||(a=='J'))&&((b=='g')||(b=='G')))   
-    		return true;
+bool similar(char x,char y)
+{
+    if (x==y) return true;
+    if((x==y)||(x==y+32)||(x==y-32))    return true;
+       
+    if(((x=='v')||(x=='V'))&&((y=='w')||(y=='W')))   return true;     
+    if(((x=='w')||(x=='W'))&&((y=='v')||(y=='V')))   return true;
 
-    	if((((a=='c')||(a=='C'))&&(((b=='k')||(b=='K'))||((b=='q')||(b=='Q')))))  
-            return true;
-    	if((((a=='k')||(a=='K'))&&(((b=='c')||(b=='C'))||((b=='q')||(b=='Q')))))   
-    		return true;
-    	if((((a=='q')||(a=='Q'))&&(((b=='c')||(b=='C'))||((b=='k')||(b=='K')))))   
-    		return true;
+    if((((x=='b')||(x=='B'))&&(((y=='f')||(y=='F'))||((y=='p')||(y=='P')))))   return true;
+    if((((x=='f')||(x=='F'))&&(((y=='b')||(y=='B'))||((y=='p')||(y=='P')))))   return true;
+    if((((x=='p')||(x=='P'))&&(((y=='f')||(y=='F'))||((y=='b')||(y=='B')))))   return true;
+
+
+    if(((x=='g')||(x=='G'))&&((y=='j')||(y=='J')))   return true;     
+    if(((x=='j')||(x=='J'))&&((y=='g')||(y=='G')))   return true;
+
+    if((((x=='c')||(x=='C'))&&(((y=='k')||(y=='K'))||((y=='q')||(y=='Q')))))   return true;
+    if((((x=='k')||(x=='K'))&&(((y=='c')||(y=='C'))||((y=='q')||(y=='Q')))))   return true;
+    if((((x=='q')||(x=='Q'))&&(((y=='c')||(y=='C'))||((y=='k')||(y=='K')))))   return true;
 
     
-    	if(((a=='s')||(a=='S'))&&((b=='z')||(b=='Z')))   
-    		return true;     
-    	if(((a=='Z')||(a=='z'))&&((b=='s')||(b=='S')))   
-    		return true;
+    if(((x=='s')||(x=='S'))&&((y=='z')||(y=='Z')))   return true;     
+    if(((x=='Z')||(x=='z'))&&((y=='s')||(y=='S')))   return true;
 
 
-    	if(((a=='d')||(a=='D'))&&((b=='t')||(b=='T')))   
-    		return true;     
-    	if(((a=='t')||(a=='T'))&&((b=='d')||(b=='D')))   
-    		return true;
+    if(((x=='d')||(x=='D'))&&((y=='t')||(y=='T')))   return true;     
+    if(((x=='t')||(x=='T'))&&((y=='d')||(y=='D')))   return true;
 
 
-    	if(((a=='o')||(a=='O'))&&((b=='u')||(b=='U')))  \
-            return true;     
-    	if(((a=='u')||(a=='U'))&&((b=='o')||(b=='O')))   
-            return true;
+    if(((x=='o')||(x=='O'))&&((y=='u')||(y=='U')))   return true;     
+    if(((x=='u')||(x=='U'))&&((y=='o')||(y=='O')))   return true;
 
 
-    	if(((a=='i')||(a=='I'))&&((b=='y')||(b=='Y')))  
-    	 return true;     
-    	if(((a=='y')||(a=='Y'))&&((b=='i')||(b=='I')))  
-    	 return true;  
+    if(((x=='i')||(x=='I'))&&((y=='y')||(y=='Y')))   return true;     
+    if(((x=='y')||(x=='Y'))&&((y=='i')||(y=='I')))   return true;  
 
 
-    	
-    	return false;
-	}
+   
+            
+            return false;
 
 
-	/*
-	now i will write the main function that will find if there is similar word in the text.
-	a => the text
-	b => the word that we search
-	*/
- 	string find(string text,string word)
+}
+
+string find(string text,string word)
 {
    string str = "";
     int j = 0;
