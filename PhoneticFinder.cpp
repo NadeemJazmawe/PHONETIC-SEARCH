@@ -59,13 +59,7 @@ namespace phonetic {
 	b => the word that we search
 	*/
  	string find(string a , string b){
- 		if(a == "")
- 			return a;
  		
- 		if ((b == "") || (a.length() < b.length()))
-            throw invalid_argument("there is no world similar to the word in the text !");
-
-
  		string s = "";
  		size_t i = 0;
  		int j = 0;
