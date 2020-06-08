@@ -78,41 +78,46 @@ namespace phonetic {
 	a => the text
 	b => the word that we search
 	*/
- 	string find(string a , string b){
- 		if(a == "")
- 			return a;
- 		
- 		if ((b == "") || (a.length() < b.length()))
-            throw invalid_argument("there is no world similar to the word in the text !");
+ 	string find(string text,string word)
+{
+   string str = "";
+    int j = 0;
+    size_t i = 0;
+    for (i = 0; i < text.length(); i++)
+    {
 
-
- 		string s = "";
- 		size_t i = 0;
- 		int j = 0;
-
-        if (a == "" || b == "" )
+        if (word == "")
             throw std::invalid_argument("Can't find the word in the text !");
 
- 		for(i = 0 ; i < a.length() ; i++){
-            while (b[j]==' ')
-                j++;
-            while (a[i] == ' ')
-               i++;
+        while (text[i] == ' ')
+        {
+            i++;
+        }
+        while (word[j]==' ')
+        {
+            j++;
+        }
 
-            while ((help(a[i], b[j])) && (b.length() > i) && (a.length() > j)){
-                s += a[i];
-                j++;
-                i++;
-            }
+        while ((text.length() > i) && (word.length() > j) && (similar(text[i], word[j]))&&(text[i]!=' '))
+        {
+            str += text[i];
+            j++;
+            i++;
+        }
+        if (str.length() == word.length())
+            return str;
 
-            if (s.length() == b.length())
-                return s;
+        else
+        {
+            str.clear();
+            j = 0;
+        }
 
-            else{
-              s.clear();
-              j = 0;
-            }
- 		}
-		throw invalid_argument("there is no world similar to the word in the text !");
-	}
-};
+        if ((text.length() == i) && (word.length() != str.length()))
+        {
+            throw runtime_error("The word " + word + " is not in the text.");
+        }
+    }
+    throw runtime_error("The word " + word + " is not in the text.");    
+    }
+}
