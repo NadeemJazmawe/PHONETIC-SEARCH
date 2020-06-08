@@ -67,7 +67,7 @@ bool similar(char x,char y)
            	while(y[j] == ' ')
            		j++;
 
-           	while((x.length() > i) && (y.length() > j) && (similar(y[i] , y[j])) && (x[i] != ' ')){
+           	while((x.length() > i) && (y.length() > j) && (similar(x[i] , y[j])) && (x[i] != ' ')){
            		save += x[i];
            		j++;
            		i++;
