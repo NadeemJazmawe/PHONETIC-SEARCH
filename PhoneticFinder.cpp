@@ -9,7 +9,7 @@ namespace phonetic {
 
 	bool help(char a , cahr b){
 		//if they similar
-		if(a == y)
+		if(a == b)
 			return true;
 
 		//upper case
