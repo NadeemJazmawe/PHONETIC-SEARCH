@@ -57,7 +57,7 @@ namespace phonetic {
 		string save = "";
 		int j = 0;
 		for(int i = 0 ; i < x.length() ; i++){
-			if (word == "")
+			if (y == "")
            		throw std::invalid_argument("Can't find the word in the text !");
 		
            	while(x[i] == ' ')
@@ -80,10 +80,10 @@ namespace phonetic {
            		save.clear;
            	}
 
-           	if((x.length() == i) && (y.length() != s.length()))
-           		throw runtime_error("The word " + word + " is not in the text.");
+           	if((x.length() == i) && (y.length() != save.length()))
+           		throw runtime_error("The word " + y + " is not in the text.");
 		}
-		throw runtime_error("The word " + word + " is not in the text.");
+		throw runtime_error("The word " + y + " is not in the text.");
 	}
 
 }
