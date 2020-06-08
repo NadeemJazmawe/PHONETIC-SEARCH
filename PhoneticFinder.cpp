@@ -91,7 +91,7 @@ namespace phonetic {
 
  		for(i=0 ; i<a.length() ; i++){
  			if(help(a[i],b[j])){
-				s += b[j];
+				s += a[i];
  				j++;
  				if(s.length() == b.length())
  					return s;
