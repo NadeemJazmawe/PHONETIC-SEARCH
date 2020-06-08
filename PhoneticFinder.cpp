@@ -77,7 +77,7 @@ namespace phonetic {
 
            	else{
            		j = 0;
-           		save.clear;
+           		save.clear();
            	}
 
            	if((x.length() == i) && (y.length() != save.length()))
