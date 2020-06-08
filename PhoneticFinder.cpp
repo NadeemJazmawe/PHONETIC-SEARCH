@@ -7,9 +7,9 @@ using namespace std;
 
 namespace phonetic {
 
-	bool help(char a , char b){
+	bool help(char a , cahr b){
 		//if they similar
-		if(a == b)
+		if(a == y)
 			return true;
 
 		//upper case
@@ -89,19 +89,28 @@ namespace phonetic {
  		size_t i = 0;
  		int j = 0;
 
- 		for(i=0 ; i<a.length() ; i++){
- 			if(help(a[i],b[j])){
-				s += a[i];
- 				j++;
- 				if(s.length() == b.length())
- 					return s;
- 			}
+        if (a == "" || b == "" )
+            throw std::invalid_argument("Can't find the word in the text !");
 
- 			else{
- 				i -= j ;
- 				j = 0;
- 				s = "";
- 			}
+ 		for(i = 0 ; i < a.length() ; i++){
+            while (b[j]==' ')
+                j++;
+            while (a[i] == ' ')
+               i++;
+
+            while ((help(a[i], b[j])) && (b.length() > i) && (a.length() > j)){
+                s += a[i];
+                j++;
+                i++;
+            }
+
+            if (s.length() == b.length())
+                return s;
+
+            else{
+              s.clear();
+              j = 0;
+            }
  		}
 		throw invalid_argument("there is no world similar to the word in the text !");
 	}
